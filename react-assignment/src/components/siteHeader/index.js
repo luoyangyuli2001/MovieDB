@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
@@ -8,8 +8,7 @@ import Popover from "@mui/material/Popover";
 import Box from "@mui/material/Box";
 import { useNavigate } from "react-router-dom";
 import { styled } from '@mui/material/styles';
-import { logout, auth } from "../../firebase";
-import { useAuthState } from "react-firebase-hooks/auth";
+import { AuthContext } from "../../contexts/authContext";
 
 const Offset = styled('div')(({ theme }) => theme.mixins.toolbar);
 
@@ -17,7 +16,7 @@ const SiteHeader = () => {
 
   const navigate = useNavigate();
 
-  const [user] = useAuthState(auth);
+  const context = useContext(AuthContext);
 
   const menuOptions1 = [
     { label: "Discover", path: "/" },
@@ -36,8 +35,8 @@ const SiteHeader = () => {
   ]
 
   const handleMenuSelect = (pageURL) => {
-    if (pageURL === "/logout") {
-      logout()
+    if (pageURL === "/logout"){
+      context.signout();
     }
     navigate(pageURL, { replace: true });
   };
@@ -129,7 +128,7 @@ const SiteHeader = () => {
               ))}
             </Popover>
           </Box>
-          {user==null?(
+          {!context.isAuthenticated?(
             <>
               <Typography variant="h6" sx={{ flexGrow: "1" }}>
                 All you ever wanted to know about Movies!
@@ -145,7 +144,7 @@ const SiteHeader = () => {
           ) : (
             <>
               <Typography variant="h6" sx={{ flexGrow: "1" }}>
-                Welcome! {user.email}
+                Welcome! {context.userEmail}
               </Typography>
               <IconButton
                 key={menuLoginOptions[0].label}

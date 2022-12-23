@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 const LogoutPage = () => {
   const navigate = useNavigate();
   useEffect(() => {
-    setTimeout(() => navigate('/'), 2000);
+    setTimeout(() => navigate('/'), 1000);
   }, [navigate]);
   return (
     <>
