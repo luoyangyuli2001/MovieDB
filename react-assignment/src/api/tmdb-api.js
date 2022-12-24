@@ -37,6 +37,17 @@ export const getFavourites = async (username) => {
     method: 'get'
   }).then(res => res.json())
 };
+
+export const deleteFavourite = (username, id) => {
+  return fetch(`/api/users/${username}/movie/${id}/favourites`, {
+    headers: {
+        'Content-Type': 'application/json'
+    },
+    method: 'post',
+    body: JSON.stringify({ id })
+  }).then(res => res.json())
+};
+
 // Old apis in assignment-1
 export const getMovies = () => {
   return fetch(
