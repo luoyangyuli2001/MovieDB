@@ -4,6 +4,7 @@ import moviesRouter from './api/movies';
 import genresRouter from './api/genres';
 import usersRouter from './api/users';
 import actorsRouter from './api/actors';
+import reviewsRouter from './api/reviews';
 import session from 'express-session';
 import authenticate from './authenticate';
 import passport from './authenticate';
@@ -36,6 +37,8 @@ app.use('/api/movies', moviesRouter);
 app.use('/api/genres', genresRouter);
 
 app.use('/api/users', usersRouter);
+
+app.use('/api/reviews', reviewsRouter);
 
 app.use(errHandler);
 
