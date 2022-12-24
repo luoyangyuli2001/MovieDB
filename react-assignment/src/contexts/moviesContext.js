@@ -18,15 +18,10 @@ const MoviesContextProvider = (props) => {
         setFavourites(favourites);
       });
     }
-  }, [favorites])
-
-  useEffect(() => {
-    if (userContext.isAuthenticated) {
-      getFavourites(email).then((favourites) => {
-        setFavourites(favourites);
-      });
+    else {
+      setFavourites([])
     }
-  }, [userContext.isAuthenticated])
+  }, [favorites, userContext.isAuthenticated, email])
 
   const addToFavorites = (username, movie) => {
     let newFavourites = [];
