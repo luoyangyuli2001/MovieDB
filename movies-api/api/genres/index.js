@@ -1,12 +1,11 @@
 import express from 'express';
-import Genre from './genreModel';
+import { getGenres } from '../tmdb/tmdb-api';
 
 const router = express.Router(); 
 
-// Get all users
 router.get('/', async (req, res) => {
-  const genres = await Genre.find();
-  res.status(200).json(genres);
+    const genres = await getGenres();
+    res.status(200).json(genres);
 });
 
-export default router; 
+export default router;
