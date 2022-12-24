@@ -6,7 +6,7 @@ export const AuthContext = createContext(null);
 const AuthContextProvider = (props) => {
   const existingToken = localStorage.getItem("token");
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [authToken, setAuthToken] = useState(existingToken);
+  const [, setAuthToken] = useState(existingToken);
   const [userEmail, setEmail] = useState("");
 
   //Function to put JWT token in local storage.
@@ -27,17 +27,17 @@ const AuthContextProvider = (props) => {
   const register = async (email, password) => {
     const result = await signup(email, password);
     console.log(result.code);
-    return (result.code == 201) ? true : false;
+    return (result.code === 201) ? true : false;
   };
 
   const addToFavorites = async (email, movieId) => {
     const result = await addFavourite(email, movieId)
-    return (result.code == 200) ? true : false;
+    return (result.code === 200) ? true : false;
   }
 
   const getUserFavourites = async (email) => {
     const result = await getFavourites(email)
-    return (result.code == 201) ? true : false;
+    return (result.code === 201) ? true : false;
   }
 
   const signout = () => {
