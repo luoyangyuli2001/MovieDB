@@ -3,6 +3,7 @@ import express from 'express';
 import moviesRouter from './api/movies';
 import genresRouter from './api/genres';
 import usersRouter from './api/users';
+import actorsRouter from './api/actors';
 import session from 'express-session';
 import authenticate from './authenticate';
 import passport from './authenticate';
@@ -27,6 +28,8 @@ const port = process.env.PORT;
 app.use(express.json());
 
 app.use(passport.initialize());
+
+app.use('/api/actors', actorsRouter);
 
 app.use('/api/movies', moviesRouter);
 
