@@ -16,7 +16,6 @@ import PopularPeoplePage from './pages/popularPeoplePage';
 import PersonPage from './pages/personDetialsPage';
 import LoginPage from "./pages/loginPage";
 import RegisterPage from "./pages/registerPage";
-import ResetPage from "./pages/resetPage";
 import LogoutPage from "./pages/logoutPage";
 import AuthProvider from "./contexts/authContext";
 import ProtectedRoutes from "./protectedRoutes";
@@ -42,7 +41,6 @@ const App = () => {
           <Route path="/logout" element={ <LogoutPage />}/>
           <Route path="/login" element={ <LoginPage />} />
           <Route path="/register" element={ <RegisterPage />} />
-          <Route path="/reset" element={ <ResetPage />} />
           <Route path="/reviews/form" element={ <AddMovieReviewPage /> } />
           <Route path="/reviews/:id" element={ <MovieReviewPage /> } />
           <Route element={<ProtectedRoutes />}>
