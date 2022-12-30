@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../contexts/authContext";
 import Button from '@mui/material/Button';
@@ -29,9 +29,12 @@ function RegisterPage() {
       alert("Password should be at least 5 characters long and contain at least one number and one letter.")
     }
   }
-  if (registered) {
-    navigate("/login")
-  }
+
+  useEffect(() => {
+    if (registered) {
+      navigate("/login")
+    }
+  }, [registered, navigate])
   return (
     <Grid container component="main" sx={{ height: '100vh' }}>
       <CssBaseline />
