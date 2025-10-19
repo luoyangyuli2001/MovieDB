@@ -1,7 +1,5 @@
 # Assignment 2 - Web API.
 
-Name: Luo Yang
-
 ## Features.
 
  + Authentication (login, register, logout)
